@@ -1,0 +1,168 @@
+{
+  "generated_at": "2026-03-13T00:00:00Z",
+  "mode": "manual_codex_same_session_three_arm",
+  "answer_model": "Codex (this session)",
+  "judge": "Manual rubric scoring by Codex",
+  "limitations": [
+    "The user requested Codex only and no external model key.",
+    "Because Codex had already inspected the local guideline corpus to build the benchmark, the baseline condition is a prompt-constrained no-local-excerpt answer, not a clean cold-start blind run.",
+    "The web-enabled arm used only official NIKOM/NCKM pages or PDFs discovered online during this turn, but browser access quality varied by document.",
+    "Scores are directional rather than publication-grade."
+  ],
+  "rubric": {
+    "scale": "0-20 total",
+    "dimensions": [
+      "core recommendation accuracy",
+      "guideline specificity",
+      "safety or referral nuance",
+      "completeness"
+    ]
+  },
+  "summary": {
+    "baseline_total": 70,
+    "web_total": 96,
+    "local_total": 100,
+    "baseline_average": 14.0,
+    "web_average": 19.2,
+    "local_average": 20.0,
+    "web_minus_baseline": 26,
+    "local_minus_baseline": 30,
+    "local_minus_web": 4
+  },
+  "questions": [
+    {
+      "id": "q1_t2dm_oral_agents",
+      "topic": "Type 2 Diabetes Mellitus",
+      "source_url": "https://nikom.or.kr/engnckm/module/practiceGuide/view.do?guide_idx=295&menu_idx=4",
+      "web_pdf_url": "https://nikom.or.kr/engnckm/module/practiceGuide/download.do?file_type=pdf&guide_idx=295",
+      "local_doc": "docs/modern-korean-medicine/markdown/km-cpg-type-2-diabetes-mellitus.md",
+      "question": "An adult with type 2 diabetes is already taking oral hypoglycemic agents but remains above glycemic target and asks for Korean medicine adjuncts. According to the Korean medicine clinical practice guideline, which two herbal formulas have the strongest explicit recommendations in this setting, and what acupuncture modality is also recommended for glycemic improvement?",
+      "web_evidence": [
+        "Official guideline DB page confirms the guideline and attachment: https://nikom.or.kr/engnckm/module/practiceGuide/view.do?guide_idx=295&menu_idx=4",
+        "Official PDF summary lines include oral-agent add-on formulas: 육미지황환 (R7-1, A/Moderate), 금궤신기환 (R7-5, A/Moderate), and sham보다 전침치료 (R11, B/Moderate)."
+      ],
+      "local_context_used": "R7-1: 육미지황환 A/Moderate. R7-5: 금궤신기환 A/Moderate. R11: 경구혈당강하제 복용 환자에서 전침 B/Moderate.",
+      "baseline_answer": "In Korean medicine adjunctive care for type 2 diabetes that is already being treated with oral hypoglycemic agents, kidney-tonifying formulas such as Yukmijihwang-hwan or Geumguesingi-hwan are commonly considered. Acupuncture, especially electroacupuncture, may also be used as an adjunct for glycemic improvement. Conventional diabetes medication should be continued and the treatment individualized to the patient.",
+      "web_answer": "Using the official NIKOM guideline page and PDF, the two strongest explicit herbal recommendations for adults already taking oral hypoglycemic agents are Yukmijihwang-hwan (육미지황환, R7-1, A/Moderate) and Geumguesingi-hwan (금궤신기환, R7-5, A/Moderate). The same summary also lists electroacupuncture as the recommended acupuncture modality for glycemic improvement in this setting (R11, B/Moderate), specifically compared with sham acupuncture.",
+      "local_answer": "For non-pregnant adults with type 2 diabetes who are already taking oral hypoglycemic agents, the guideline gives the strongest explicit herbal support to Yukmijihwang-hwan (육미지황환, R7-1) and Geumguesingi-hwan (금궤신기환, R7-5), both graded A/Moderate. In the same setting, electroacupuncture is also recommended/considered for glycemic improvement versus sham acupuncture (R11, B/Moderate). These recommendations are specific to the oral-hypoglycemic-agent combination setting, not just diabetes care in general.",
+      "scores": {
+        "baseline": 16,
+        "web": 20,
+        "local": 20
+      },
+      "notes": {
+        "baseline": "Correct directionally but lacked explicit grading and did not clearly anchor the formulas to the exact oral-agent combination setting.",
+        "web": "Web retrieval reached the official PDF and matched the local-doc result.",
+        "local": "Exact formulas, correct setting, and correct acupuncture modality were all explicit."
+      }
+    },
+    {
+      "id": "q2_obesity_herbal_safety",
+      "topic": "Obesity",
+      "source_url": "https://nikom.or.kr/engnckm/module/practiceGuide/view.do?guide_idx=328&menu_idx=4",
+      "web_pdf_url": "https://nikom.or.kr/engnckm/module/practiceGuide/download.do?file_type=pdf&guide_idx=328",
+      "local_doc": "docs/modern-korean-medicine/markdown/km-cpg-obesity.md",
+      "question": "An adult with obesity (BMI 31 kg/m2), hypertension, and dyslipidemia asks about herbal treatment. According to the Korean medicine obesity guideline, which prescription has the strongest standalone recommendation overall, which prescription is specifically highlighted for high BMI or cardiometabolic comorbidity, and what safety monitoring is required for mahuang-modified prescriptions?",
+      "web_evidence": [
+        "Official PDF lines show Uiyin-tang / 의이인탕 is recommended A/High.",
+        "Official PDF lines show Taeeumjowi-tang / 태음조위탕 is B/Moderate and specifically useful with BMI > 30 or hypertension/diabetes/hyperlipidemia.",
+        "Official PDF lines show mahuang-modified prescriptions require attention to ephedrine concentration, underlying disease, sympathetic sensitivity, and monitoring of blood pressure and heart rate."
+      ],
+      "local_context_used": "R1-3: 의이인탕 A/High. R1-1: 태음조위탕 B/Moderate, especially BMI>30 or HTN/DM/dyslipidemia. R2: 마황 가미 처방은 용량 조절, 에페드린 함량, 기저질환, 혈압/심박수 모니터링.",
+      "baseline_answer": "For obesity, Korean medicine commonly uses formulas such as Bangpungtongsung-san, Taeeumjowi-tang, and Yiyiren-tang. In a patient with BMI above 30 and cardiometabolic comorbidity, Taeeumjowi-tang can be attractive, and any mahuang-containing prescription requires caution because it can worsen insomnia, palpitations, blood pressure, and cardiovascular risk. The dose should be chosen carefully and the patient monitored closely.",
+      "web_answer": "The official obesity guideline PDF identifies Uiyin-tang / Yiyiren-tang (의이인탕, R1-3) as the strongest standalone herbal recommendation overall, graded A/High. It also states that Taeeumjowi-tang (태음조위탕, R1-1), graded B/Moderate, is worth considering for patients with hypertension, diabetes, hyperlipidemia, or severe obesity with BMI over 30 kg/m2. For mahuang-modified prescriptions, the official PDF says doctors should consider ephedrine concentration, underlying disease, and sympathetic sensitivity, and should regularly monitor adverse effects including blood pressure and heart rate.",
+      "local_answer": "The strongest standalone herbal recommendation overall is Yiyiren-tang (의이인탕, R1-3), graded A/High. Taeeumjowi-tang (태음조위탕, R1-1), graded B/Moderate, is specifically highlighted for patients with BMI above 30 kg/m2 or with hypertension, diabetes, or dyslipidemia. For mahuang-modified prescriptions, the guideline calls for physician-controlled dosing, attention to ephedrine content and sympathetic sensitivity, review of constitution and baseline disease, and regular monitoring of adverse effects and vital signs including blood pressure and heart rate, with extra caution in cardiovascular disease.",
+      "scores": {
+        "baseline": 11,
+        "web": 20,
+        "local": 20
+      },
+      "notes": {
+        "baseline": "Missed the strongest overall formula and gave only generic mahuang safety language.",
+        "web": "Official web PDF was sufficient to recover the same operational details as the local corpus.",
+        "local": "Recovered the exact top formula, the comorbidity-specific formula, and the concrete monitoring items."
+      }
+    },
+    {
+      "id": "q3_depression_menstrual_perimenopause",
+      "topic": "Depression",
+      "source_url": "https://nikom.or.kr/engnckm/module/practiceGuide/view.do?guide_idx=337&menu_idx=4",
+      "web_pdf_url": "https://nikom.or.kr/board/boardFile/download/138/565473/35178.do",
+      "local_doc": "docs/modern-korean-medicine/markdown/km-cpg-depression.md",
+      "question": "A perimenopausal woman with mild-to-moderate major depressive disorder reports worsening around menstruation, declines antidepressants, and has no suicidality, psychosis, or alcohol dependence. According to the Korean medicine depression guideline, which herbal formula is best supported, what pattern does it fit, and what findings would trigger referral rather than routine primary Korean medicine management?",
+      "web_evidence": [
+        "Official guideline DB page confirms the 2024 depression guideline.",
+        "Official quick-reference PDF lists 소요산 as B/Moderate among major depressive disorder herbal options.",
+        "Official quick-reference PDF routes psychiatric emergency and severe depression to specialist referral, but it does not expose the full pattern-specific paragraph in the browser result."
+      ],
+      "local_context_used": "R1-2: 소요산 B/Moderate, 간울비허/혈허, 갱년기 여성 및 월경주기 관련 악화. Intro cautions: severe depression, suicidality, self-harm risk, psychotic symptoms, alcohol dependence -> referral.",
+      "baseline_answer": "For perimenopausal or menstrual-related worsening depression, a formula in the Soyo-san family is a reasonable Korean medicine choice, especially when liver-qi stagnation with an underlying deficiency pattern is suspected. Referral is needed if the patient has severe major depression, suicidality, psychosis, or other signs that specialist psychiatric care is required.",
+      "web_answer": "Using only the official NIKOM depression guideline page and quick-reference PDF, the best-supported herbal formula I can identify is Soyo-san (소요산), listed at B/Moderate among major depressive disorder herbal options. The same official quick reference makes clear that psychiatric emergency, severe depression, or non-improvement/worsening should trigger referral to psychiatry or a Korean medicine neuropsychiatry specialist. The quick-reference PDF available through web retrieval does not expose the full pattern-specific paragraph, so I cannot verify the exact pattern wording from the web arm alone.",
+      "local_answer": "The best-supported formula here is Soyo-san (소요산, R1-2), graded B/Moderate. The guideline links it to a gan-ul bi-heo / blood-deficiency pattern (간울비허, 혈허) and specifically notes its use when depression worsens with menstrual abnormalities or the menstrual cycle and in menopausal women. Referral rather than routine primary Korean medicine management is indicated when severe depression, self-harm or suicide risk, psychotic symptoms such as delusions or hallucinations, or alcohol dependence are present.",
+      "scores": {
+        "baseline": 16,
+        "web": 16,
+        "local": 20
+      },
+      "notes": {
+        "baseline": "Mostly correct but too generic on pattern naming and omitted alcohol dependence.",
+        "web": "Web retrieval reached the official guideline page and official quick-reference PDF, but not a web-accessible full recommendation passage with the exact pattern language. This preserved formula and referral accuracy but lost pattern specificity.",
+        "local": "Captured the specific formula, pattern, population, and referral triggers."
+      }
+    },
+    {
+      "id": "q4_dizziness_cervicogenic",
+      "topic": "Dizziness",
+      "source_url": "https://nikom.or.kr/engnckm",
+      "web_pdf_url": "https://nikom.or.kr/board/boardFile/download/138/567287/36676.do",
+      "local_doc": "docs/modern-korean-medicine/markdown/km-cpg-dizziness.md",
+      "question": "For cervicogenic dizziness with persistent neck muscle tension, which Korean medicine intervention has the strongest recommendation in the dizziness guideline, and what is one B/Moderate combination therapy aimed at improving symptoms plus vertebrobasilar blood flow?",
+      "web_evidence": [
+        "Official NCKM page exposes a Dizziness(2024) utilization tool.",
+        "Official infographic PDF explicitly lists 수기요법 권고 (IIIa-D-1 A/High).",
+        "The same official infographic lists 한약과 수기요법 병행 고려 (IIIa-B-2 B/Moderate) for cervicogenic dizziness."
+      ],
+      "local_context_used": "R(IIIa-D-1): 수기요법 A/High. B/Moderate examples: R(IIIa-B-2) 한약+수기요법, R(IIIa-D-2) 수기요법+물리치료, R(IIIa-D-5) 추나요법+일반침, R(IIIa-D-10) 근건이완수기요법+추나요법.",
+      "baseline_answer": "For cervicogenic dizziness, Korean medicine often emphasizes manual therapy such as chuna or related cervical manual approaches, sometimes combined with acupuncture or herbal medicine. Combination treatment can be useful when symptoms are tied to neck muscle tension and cervical dysfunction.",
+      "web_answer": "The official NIKOM dizziness infographic identifies manual therapy (수기요법) as the strongest recommendation for cervicogenic dizziness, explicitly marked IIIa-D-1 A/High. One B/Moderate combination aimed at improving symptoms and vertebrobasilar blood flow is herbal medicine plus manual therapy (IIIa-B-2). The same infographic also lists other B/Moderate combinations such as manual therapy plus physical therapy and chuna plus general acupuncture.",
+      "local_answer": "The strongest recommendation is manual therapy (수기요법) for cervicogenic dizziness, graded A/High in R(IIIa-D-1). One acceptable B/Moderate combination is herbal medicine plus manual therapy (R(IIIa-B-2)) for symptom improvement and vertebrobasilar flow improvement. Other B/Moderate options in the same section include manual therapy plus physical therapy, chuna plus acupuncture, and muscle-relaxation manual therapy plus chuna.",
+      "scores": {
+        "baseline": 13,
+        "web": 20,
+        "local": 20
+      },
+      "notes": {
+        "baseline": "Identified the general therapeutic family but failed to give the exact highest-strength recommendation and a guideline-anchored combination.",
+        "web": "The official infographic was enough for a fully correct answer on this question.",
+        "local": "Named the exact A/High recommendation and gave a correct B/Moderate combination."
+      }
+    },
+    {
+      "id": "q5_bph_tongguan_tang",
+      "topic": "Prostatic Hypertrophy",
+      "source_url": "https://nikom.or.kr/engnckm/module/practiceGuide/view.do?guide_idx=353&menu_idx=4",
+      "web_pdf_url": "https://nikom.or.kr/engnckm/module/practiceGuide/download.do?file_type=pdf&guide_idx=353",
+      "local_doc": "docs/modern-korean-medicine/markdown/km-cpg-prostatic-hypertrophy.md",
+      "question": "A 68-year-old man with benign prostatic hyperplasia has no acute urinary retention, IPSS 18, Qmax 12 mL/s, prostate volume 32 mL, burning urethral pain, and weak urinary stream. According to the Korean medicine prostatic hypertrophy guideline, which herbal prescription best matches this profile, how long is treatment generally considered, and what formula modification is suggested for the burning-pain pattern?",
+      "web_evidence": [
+        "Official web PDF states Tonggwan-tang is appropriate when age > 50, IPSS > 13, Qmax < 15 mL/s, and PV >= 20 mL.",
+        "Official web PDF states 6 months or longer should be considered.",
+        "Official web PDF states that for damp-heat with urethral pain or burning, 황련 and 적작약 are added."
+      ],
+      "local_context_used": "R1-4: 통관탕 B/Moderate; 50세 이상, IPSS>13, Qmax<15, PV>=20. 6개월 이상 고려. 습열/요도 통증·작열감 시 황련, 적작약 가미.",
+      "baseline_answer": "For BPH without acute urinary retention and with moderate lower urinary tract symptoms, a Korean medicine formula that clears obstruction and damp-heat such as Tonggwan-tang is a plausible fit, particularly when burning urinary symptoms are present. This usually requires a fairly prolonged treatment course, and damp-heat-directed additions can be considered.",
+      "web_answer": "The official prostatic hypertrophy guideline PDF supports Tonggwan-tang (통관탕) for exactly this sort of profile: men older than 50 years with IPSS above 13, Qmax below 15 mL/s, and prostate volume at least 20 mL. The same official PDF says treatment is generally considered for 6 months or longer while monitoring symptoms and flow parameters. For a damp-heat pattern with urethral pain or burning, the suggested additions are Huanglian (황련) and Jeokjakyak / red peony root (적작약).",
+      "local_answer": "Tonggwan-tang (통관탕, R1-4) best matches this profile. The guideline gives it B/Moderate support and specifically highlights men older than 50 years with IPSS above 13, Qmax below 15 mL/s, and prostate volume at least 20 mL, which fits this case. Treatment is generally considered for 6 months or longer while monitoring symptoms and uroflow/prostate parameters. For the burning-pain damp-heat pattern, the suggested additions are Huanglian (황련) and red peony root / Jeokjakyak (적작약).",
+      "scores": {
+        "baseline": 14,
+        "web": 20,
+        "local": 20
+      },
+      "notes": {
+        "baseline": "Got the general formula family but missed the exact duration and specific additions.",
+        "web": "Official web PDF matched the local corpus on the details that matter here.",
+        "local": "Recovered the precise formula, matching entry criteria, duration, and modification."
+      }
+    }
+  ]
+}
